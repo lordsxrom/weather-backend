@@ -1,5 +1,6 @@
 package ru.shumskii.weather
 
+import divkit.dsl.*
 import org.springframework.http.HttpStatus
 import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.GetMapping
@@ -14,9 +15,26 @@ class LaunchScreenController {
     @GetMapping
     fun getLaunchScreen(
         @RequestHeader headers: Map<String, String>
-    ): ResponseEntity<Any> {
+    ): ResponseEntity<Divan> {
         return ResponseEntity(
-            Any(),
+            divan {
+                data(
+                    logId = PAGE,
+                    div = container(
+                        height = matchParentSize(),
+                        width = matchParentSize(),
+                        contentAlignmentHorizontal = center,
+                        contentAlignmentVertical = center,
+                        items = listOf(
+                            text(
+                                height = wrapContentSize(),
+                                width = wrapContentSize(),
+                                text = "Hello DivKit",
+                            )
+                        )
+                    ),
+                )
+            },
             HttpStatus.OK
         )
     }
