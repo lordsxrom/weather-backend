@@ -7,7 +7,7 @@ fun DivScope.renderScaffold(
     appBar: Div? = null,
     body: Div? = null,
     bottomNavigationBar: Div? = null,
-    backgroundColor: List<Background>? = solidBackground(color(Colors.SURFACE)).asList(),
+    backgroundColor: List<Background>? = null,
     floatingActionButton: Div? = null,
 ): Div {
     return stack(
