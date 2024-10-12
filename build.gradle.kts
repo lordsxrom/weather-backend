@@ -33,6 +33,10 @@ dependencies {
 	// H2 Database
 	implementation("org.springframework.boot:spring-boot-starter-data-jpa")
 	runtimeOnly("com.h2database:h2")
+
+	// Retrofit
+	implementation("com.squareup.retrofit2:retrofit:2.9.0")
+	implementation("com.squareup.retrofit2:converter-gson:2.9.0")
 }
 
 kotlin {

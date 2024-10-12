@@ -11,4 +11,5 @@ object Images {
 
     const val EMAIL_ICON = "https://cdn.iconscout.com/icon/premium/png-256-thumb/email-1150-817783.png?f=webp&w=256"
     const val PASSWORD_ICON = "https://www.veryicon.com/download/png/miscellaneous/kara/password-239?s=256"
+    const val PLUS_ICON = "https://cdn-icons-png.flaticon.com/256/32/32339.png"
 }

@@ -5,7 +5,7 @@ import divkit.dsl.scope.DivScope
 
 fun DivScope.renderButton(
     text: String,
-    action: Action,
+    actions: List<Action>,
     margins: EdgeInsets = edgeInsets(),
 ): Div {
     return text(
@@ -16,7 +16,7 @@ fun DivScope.renderButton(
         fontSize = 16,
         textColor = color(Colors.ON_TERTIARY),
         margins = margins,
-        action = action,
+        actions = actions,
         background = solidBackground(color(Colors.TERTIARY)).asList(),
         border = border(cornerRadius = 8),
         textAlignmentHorizontal = center,
@@ -26,7 +26,7 @@ fun DivScope.renderButton(
 
 fun DivScope.renderOutlinedButton(
     text: String,
-    action: Action,
+    actions: List<Action>,
     margins: EdgeInsets = edgeInsets(),
 ): Div {
     return text(
@@ -37,7 +37,7 @@ fun DivScope.renderOutlinedButton(
         fontSize = 16,
         textColor = color(Colors.TERTIARY),
         margins = margins,
-        action = action,
+        actions = actions,
         border = border(
             cornerRadius = 8,
             stroke = stroke(

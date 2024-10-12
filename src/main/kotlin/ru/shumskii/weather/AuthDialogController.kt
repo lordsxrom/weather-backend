@@ -12,8 +12,7 @@ import ru.shumskii.weather.data.entity.User
 import ru.shumskii.weather.data.repository.UserRepository
 import ru.shumskii.weather.domain.models.AuthType
 import ru.shumskii.weather.ui.*
-import ru.shumskii.weather.utils.HIDE
-import ru.shumskii.weather.utils.SHOW
+import ru.shumskii.weather.utils.*
 
 @RestController
 @RequestMapping("/${AuthDialogController.PAGE}")
@@ -23,9 +22,9 @@ internal class AuthDialogController(
 
     @GetMapping("/$SHOW")
     fun showAuthDialog(
-        @RequestParam type: AuthType,
-        @RequestParam email: String,
-        @RequestParam password: String,
+        @RequestParam(name = TYPE) type: AuthType,
+        @RequestParam(name = EMAIL) email: String,
+        @RequestParam(name = PASSWORD) password: String,
     ): ResponseEntity<DivanPatch> {
         return ResponseEntity(
             divanPatch {
@@ -36,25 +35,28 @@ internal class AuthDialogController(
                             if (user.password == password) {
                                 renderPatch(
                                     content = renderDialogContent(
-                                        text = Strings.AUTH_DIALOG_ERROR_TEXT_WELLCOME(email),
-                                        action = navigationAction(
-                                            page = "main" // TODO : into PAGE
+                                        text = Strings.AUTH_DIALOG_SUCCESS_TEXT_WELLCOME(email),
+                                        actions = listOf(
+                                            setVariableAction(
+                                                name = VARIABLE_USER_ID,
+                                                value = user.id,
+                                            ),
+                                            navigationAction(
+                                                page = MainScreenController.PAGE,
+                                                queries = mapOf(
+                                                    USER_ID to user.id
+                                                )
+                                            ),
                                         ),
                                     ),
-                                    onAppliedActions = listOf(
-                                        setVariableAction(
-                                            name = VARIABLE_USER_ID,
-                                            value = user.id
-                                        )
-                                    )
                                 )
                             } else {
                                 renderPatch(
                                     content = renderDialogContent(
                                         text = Strings.AUTH_DIALOG_ERROR_TEXT_INCORRECT,
-                                        action = hideDialogAction(
+                                        actions = hideDialogAction(
                                             dialog = PAGE,
-                                        ),
+                                        ).asList(),
                                     ),
                                     dismissAction = hideDialogAction(
                                         dialog = PAGE,
@@ -65,9 +67,9 @@ internal class AuthDialogController(
                             renderPatch(
                                 content = renderDialogContent(
                                     text = Strings.AUTH_DIALOG_ERROR_TEXT_NOT_FOUND,
-                                    action = hideDialogAction(
+                                    actions = hideDialogAction(
                                         dialog = PAGE,
-                                    ),
+                                    ).asList(),
                                 ),
                                 dismissAction = hideDialogAction(
                                     dialog = PAGE,
@@ -82,9 +84,9 @@ internal class AuthDialogController(
                             renderPatch(
                                 content = renderDialogContent(
                                     text = Strings.AUTH_DIALOG_ERROR_TEXT_ALREADY_EXIST(email),
-                                    action = hideDialogAction(
+                                    actions = hideDialogAction(
                                         dialog = PAGE,
-                                    ),
+                                    ).asList(),
                                 ),
                                 dismissAction = hideDialogAction(
                                     dialog = PAGE,
@@ -101,17 +103,20 @@ internal class AuthDialogController(
                             )
                             renderPatch(
                                 content = renderDialogContent(
-                                    text = Strings.AUTH_DIALOG_ERROR_TEXT_CREATED(email),
-                                    action = navigationAction(
-                                        page = "main" // TODO : into PAGE
+                                    text = Strings.AUTH_DIALOG_SUCCESS_TEXT_CREATED(email),
+                                    actions = listOf(
+                                        setVariableAction(
+                                            name = VARIABLE_USER_ID,
+                                            value = newUser.id,
+                                        ),
+                                        navigationAction(
+                                            page = MainScreenController.PAGE,
+                                            queries = mapOf(
+                                                USER_ID to newUser.id
+                                            )
+                                        ),
                                     ),
                                 ),
-                                onAppliedActions = listOf(
-                                    setVariableAction(
-                                        name = VARIABLE_USER_ID,
-                                        value = newUser.id
-                                    )
-                                )
                             )
                         }
                     }
@@ -136,7 +141,6 @@ internal class AuthDialogController(
     private fun DivScope.renderPatch(
         content: Div?,
         dismissAction: Action? = null,
-        onAppliedActions: List<Action>? = null,
     ): Patch {
         return patch(
             changes = listOf(
@@ -150,13 +154,12 @@ internal class AuthDialogController(
                     ),
                 )
             ),
-            onAppliedActions = onAppliedActions,
         )
     }
 
     private fun DivScope.renderDialogContent(
         text: String,
-        action: Action,
+        actions: List<Action>,
     ): Div {
         return column(
             width = matchParentSize(),
@@ -181,7 +184,7 @@ internal class AuthDialogController(
                 ),
                 renderButton(
                     text = Strings.AUTH_DIALOG_BUTTON_TEXT,
-                    action = action,
+                    actions = actions,
                     margins = edgeInsets(top = 24),
                 ),
             )

@@ -53,7 +53,7 @@ fun DivScope.hideDialogAction(
     val url = makeUrl(route)
     return action(
         logId = "hide_dialog_$dialog",
-        url = url
+        url = url,
     ).evaluate(
         isEnabled = isEnabledExpression,
     )
@@ -71,7 +71,9 @@ private fun makeRoute(
     queries: Map<String, Any> = emptyMap(),
 ): String {
     val extendedQueries = queries.toMutableMap().apply {
-        put(USER_ID, "@{$VARIABLE_USER_ID}")
+        if (!contains(USER_ID)) {
+            put(USER_ID, "@{$VARIABLE_USER_ID}")
+        }
     }
     val formattedQueries = extendedQueries.map { entry ->
         entry.key + "%3D" + entry.value

@@ -83,14 +83,16 @@ class AuthScreenController {
                 ),
                 renderButton(
                     text = Strings.AUTH_BUTTON_TEXT_SIGN_IN,
-                    action = showDialogAction(
-                        dialog = AuthDialogController.PAGE,
-                        queries = mapOf(
-                            TYPE to AuthType.SIGN_IN,
-                            EMAIL to "@{$PRIVATE_VARIABLE_EMAIL}",
-                            PASSWORD to "@{$PRIVATE_VARIABLE_PASSWORD}",
+                    actions= listOf(
+                        showDialogAction(
+                            dialog = AuthDialogController.PAGE,
+                            queries = mapOf(
+                                TYPE to AuthType.SIGN_IN,
+                                EMAIL to "@{$PRIVATE_VARIABLE_EMAIL}",
+                                PASSWORD to "@{$PRIVATE_VARIABLE_PASSWORD}",
+                            ),
+                            isEnabledExpression = expression("@{len($PRIVATE_VARIABLE_EMAIL) > 0 && len($PRIVATE_VARIABLE_PASSWORD) > 0}")
                         ),
-                        isEnabledExpression = expression("@{len($PRIVATE_VARIABLE_EMAIL) > 0 && len($PRIVATE_VARIABLE_PASSWORD) > 0}")
                     ),
                     margins = edgeInsets(top = 28),
                 ),
@@ -99,14 +101,16 @@ class AuthScreenController {
                 ),
                 renderOutlinedButton(
                     text = Strings.AUTH_BUTTON_TEXT_SIGN_UP,
-                    action = showDialogAction(
-                        dialog = AuthDialogController.PAGE,
-                        queries = mapOf(
-                            TYPE to AuthType.SIGN_UP,
-                            EMAIL to "@{$PRIVATE_VARIABLE_EMAIL}",
-                            PASSWORD to "@{$PRIVATE_VARIABLE_PASSWORD}",
-                        ),
-                        isEnabledExpression = expression("@{len($PRIVATE_VARIABLE_EMAIL) > 0 && len($PRIVATE_VARIABLE_PASSWORD) > 0}")
+                    actions = listOf(
+                        showDialogAction(
+                            dialog = AuthDialogController.PAGE,
+                            queries = mapOf(
+                                TYPE to AuthType.SIGN_UP,
+                                EMAIL to "@{$PRIVATE_VARIABLE_EMAIL}",
+                                PASSWORD to "@{$PRIVATE_VARIABLE_PASSWORD}",
+                            ),
+                            isEnabledExpression = expression("@{len($PRIVATE_VARIABLE_EMAIL) > 0 && len($PRIVATE_VARIABLE_PASSWORD) > 0}")
+                        )
                     ),
                     margins = edgeInsets(top = 40),
                 )
