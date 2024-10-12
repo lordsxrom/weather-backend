@@ -1,4 +1,4 @@
-package ru.shumskii.weather.ui
+package ru.shumskii.weather.ui.base
 
 import divkit.dsl.Action
 import divkit.dsl.Url
@@ -8,6 +8,7 @@ import divkit.dsl.evaluate
 import divkit.dsl.scope.DivScope
 import ru.shumskii.weather.VARIABLE_HOST
 import ru.shumskii.weather.VARIABLE_USER_ID
+import ru.shumskii.weather.utils.UPDATE
 import ru.shumskii.weather.utils.HIDE
 import ru.shumskii.weather.utils.SHOW
 import ru.shumskii.weather.utils.USER_ID
@@ -53,6 +54,22 @@ fun DivScope.hideDialogAction(
     val url = makeUrl(route)
     return action(
         logId = "hide_dialog_$dialog",
+        url = url,
+    ).evaluate(
+        isEnabled = isEnabledExpression,
+    )
+}
+
+fun DivScope.updateDialogAction(
+    dialog: String,
+    queries: Map<String, Any> = emptyMap(),
+    isEnabledExpression: ExpressionProperty<Boolean>? = null,
+): Action {
+    val dialogPath = "$dialog/$UPDATE"
+    val route = makeRoute(dialogPath, queries)
+    val url = makeUrl(route)
+    return action(
+        logId = "action_dialog_$dialog",
         url = url,
     ).evaluate(
         isEnabled = isEnabledExpression,

@@ -1,4 +1,4 @@
-package ru.shumskii.weather.ui
+package ru.shumskii.weather.ui.base
 
 import divkit.dsl.*
 import divkit.dsl.scope.DivScope

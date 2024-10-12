@@ -1,7 +1,10 @@
-package ru.shumskii.weather.ui
+package ru.shumskii.weather.ui.base
 
 import divkit.dsl.*
 import divkit.dsl.scope.DivScope
+import ru.shumskii.weather.ui.resources.Colors
+import ru.shumskii.weather.ui.resources.Images
+import ru.shumskii.weather.ui.resources.Strings
 
 fun DivScope.renderBottomNavigationBar(
     stateId: Int,

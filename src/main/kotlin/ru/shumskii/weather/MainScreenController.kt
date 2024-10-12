@@ -4,11 +4,16 @@ import divkit.dsl.*
 import divkit.dsl.scope.DivScope
 import org.springframework.http.HttpStatus
 import org.springframework.http.ResponseEntity
-import org.springframework.web.bind.annotation.*
+import org.springframework.web.bind.annotation.GetMapping
+import org.springframework.web.bind.annotation.RequestMapping
+import org.springframework.web.bind.annotation.RequestParam
+import org.springframework.web.bind.annotation.RestController
 import ru.shumskii.weather.data.remote.RealtimeWeatherResponse
 import ru.shumskii.weather.data.repository.UserRepository
 import ru.shumskii.weather.data.repository.WeatherRepository
-import ru.shumskii.weather.ui.*
+import ru.shumskii.weather.ui.base.*
+import ru.shumskii.weather.ui.resources.Colors
+import ru.shumskii.weather.ui.resources.Images
 import ru.shumskii.weather.utils.USER_ID
 import kotlin.jvm.optionals.getOrNull
 
@@ -77,13 +82,9 @@ internal class MainScreenController(
             ),
             contentAlignmentVertical = center,
             contentAlignmentHorizontal = center,
-//            action = showBottomSheetAction(
-//                host = host,
-//                bottomSheetId = AddCityBottomSheetScreenController.PAGE,
-//                queries = mapOf(
-//                    "email" to email,
-//                )
-//            )
+            action = showDialogAction(
+                dialog = AddCityBottomSheetController.PAGE,
+            ),
         )
     }
 

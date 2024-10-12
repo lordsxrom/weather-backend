@@ -1,4 +1,4 @@
-package ru.shumskii.weather.ui
+package ru.shumskii.weather.ui.resources
 
 object Strings {
     const val NAVIGATION_ITEM_TEXT_MAIN = "Main"
@@ -19,4 +19,8 @@ object Strings {
     fun AUTH_DIALOG_ERROR_TEXT_ALREADY_EXIST(email: String) = "User $email is already exist"
     fun AUTH_DIALOG_SUCCESS_TEXT_CREATED(email: String) = "User $email was created"
     fun AUTH_DIALOG_SUCCESS_TEXT_WELLCOME(email: String) = "Welcome back $email"
+
+    const val ADD_CITY_BOTTOM_SHEET_TITLE_CITY = "Add a city to your favourite list"
+    const val ADD_CITY_BOTTOM_SHEET_HINT_CITY = "Enter city name"
+    const val ADD_CITY_BOTTOM_SHEET_BUTTON_TEXT = "Add"
 }

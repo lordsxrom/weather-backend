@@ -5,9 +5,9 @@ import divkit.dsl.core.expression
 import org.springframework.http.HttpStatus
 import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.*
-import ru.shumskii.weather.ui.Colors
-import ru.shumskii.weather.ui.ROOT_SCAFFOLD_ID
-import ru.shumskii.weather.ui.navigationAction
+import ru.shumskii.weather.ui.base.ROOT_SCAFFOLD_ID
+import ru.shumskii.weather.ui.base.navigationAction
+import ru.shumskii.weather.ui.resources.Colors
 import ru.shumskii.weather.utils.HOST
 import ru.shumskii.weather.utils.USER_ID
 
@@ -47,6 +47,10 @@ class LaunchScreenController {
                             name = PRIVATE_VARIABLE_PASSWORD,
                             value = "",
                         ),
+                        stringVariable(
+                            name = PRIVATE_VARIABLE_CITY,
+                            value = "",
+                        ),
                     ),
                     variableTriggers = listOf(
                         trigger(
@@ -75,6 +79,7 @@ class LaunchScreenController {
 
 const val PRIVATE_VARIABLE_EMAIL = "private_variable_email"
 const val PRIVATE_VARIABLE_PASSWORD = "private_variable_password"
+const val PRIVATE_VARIABLE_CITY = "private_variable_city"
 
 const val VARIABLE_HOST = "variable_host"
 const val VARIABLE_USER_ID = "variable_user_id"

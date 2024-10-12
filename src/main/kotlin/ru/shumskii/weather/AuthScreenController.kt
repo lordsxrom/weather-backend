@@ -10,7 +10,11 @@ import org.springframework.web.bind.annotation.RequestHeader
 import org.springframework.web.bind.annotation.RequestMapping
 import org.springframework.web.bind.annotation.RestController
 import ru.shumskii.weather.domain.models.AuthType
-import ru.shumskii.weather.ui.*
+import ru.shumskii.weather.ui.base.*
+import ru.shumskii.weather.ui.custom.renderTitledInput
+import ru.shumskii.weather.ui.resources.Colors
+import ru.shumskii.weather.ui.resources.Images
+import ru.shumskii.weather.ui.resources.Strings
 import ru.shumskii.weather.utils.EMAIL
 import ru.shumskii.weather.utils.PASSWORD
 import ru.shumskii.weather.utils.TYPE
@@ -83,7 +87,7 @@ class AuthScreenController {
                 ),
                 renderButton(
                     text = Strings.AUTH_BUTTON_TEXT_SIGN_IN,
-                    actions= listOf(
+                    actions = listOf(
                         showDialogAction(
                             dialog = AuthDialogController.PAGE,
                             queries = mapOf(
@@ -146,82 +150,6 @@ class AuthScreenController {
             ),
             contentAlignmentVertical = center,
             margins = margins,
-        )
-    }
-
-    private fun DivScope.renderTitledInput(
-        titleText: String,
-        keyboardType: Input.KeyboardType,
-        hintText: String,
-        textVariable: String,
-        margins: EdgeInsets,
-    ): Div {
-        return column(
-            width = matchParentSize(),
-            height = wrapContentSize(),
-            margins = margins,
-            items = listOf(
-                text(
-                    width = wrapContentSize(),
-                    height = wrapContentSize(),
-                    text = titleText,
-                    fontWeight = regular,
-                    fontSize = 16,
-                    textColor = color(Colors.ON_SURFACE),
-                ),
-                stack(
-                    width = matchParentSize(),
-                    height = fixedSize(50),
-                    border = border(cornerRadius = 8),
-                    margins = edgeInsets(top = 10),
-                    paddings = edgeInsets(start = 20),
-                    background = solidBackground(color(Colors.SURFACE_CONTAINER_HIGHEST)).asList(),
-                    items = listOf(
-                        input(
-                            width = matchParentSize(),
-                            height = wrapContentSize(),
-                            textVariable = textVariable,
-                            keyboardType = keyboardType,
-                            hintText = hintText,
-                            textColor = color(Colors.ON_SURFACE),
-                            highlightColor = color(Colors.SECONDARY),
-                            hintColor = color(Colors.ON_SURFACE),
-                            fontSize = 14,
-                            lineHeight = 22,
-                            textAlignmentVertical = center,
-                            alignmentVertical = center,
-                        ),
-                        container(
-                            width = fixedSize(50),
-                            height = fixedSize(50),
-                            background = solidBackground(color(Colors.TERTIARY)).asList(),
-                            border = border(cornerRadius = 8),
-                            alignmentVertical = center,
-                            alignmentHorizontal = end,
-                            contentAlignmentVertical = center,
-                            contentAlignmentHorizontal = center,
-                            items = listOf(
-                                image(
-                                    width = fixedSize(24),
-                                    height = fixedSize(24),
-                                    tintColor = color(Colors.ON_TERTIARY),
-                                    imageUrl = Url.create(
-                                        when (keyboardType) {
-                                            EmailEnumValue -> Images.EMAIL_ICON
-                                            MultiLineTextEnumValue -> TODO()
-                                            NumberEnumValue -> TODO()
-                                            PasswordEnumValue -> Images.PASSWORD_ICON
-                                            PhoneEnumValue -> TODO()
-                                            SingleLineTextEnumValue -> TODO()
-                                            UriEnumValue -> TODO()
-                                        }
-                                    )
-                                )
-                            )
-                        )
-                    ),
-                ),
-            )
         )
     }
 
