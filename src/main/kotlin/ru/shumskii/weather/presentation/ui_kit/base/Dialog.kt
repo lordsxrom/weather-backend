@@ -1,15 +1,15 @@
-package ru.shumskii.weather.ui.base
+package ru.shumskii.weather.presentation.ui_kit.base
 
 import divkit.dsl.*
 import divkit.dsl.scope.DivScope
 
-fun DivScope.renderBottomSheet(
+fun DivScope.renderDialog(
     items: List<Div> = emptyList(),
     dismissAction: Action? = null,
 ): Div {
     val show = items.isNotEmpty()
     return stack(
-        id = BOTTOM_SHEET_ID,
+        id = DIALOG_ID,
         width = matchParentSize(),
         height = matchParentSize(),
         items = items,
@@ -26,4 +26,4 @@ fun DivScope.renderBottomSheet(
     )
 }
 
-const val BOTTOM_SHEET_ID = "bottom_sheet"
+const val DIALOG_ID = "dialog"

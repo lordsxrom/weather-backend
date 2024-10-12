@@ -1,4 +1,4 @@
-package ru.shumskii.weather.ui.resources
+package ru.shumskii.weather.presentation.ui_kit.resources
 
 object Images {
     const val NAVIGATION_ITEM_ICON_MAIN = "https://icons.veryicon.com/png/o/miscellaneous/test-6/weather-91.png"

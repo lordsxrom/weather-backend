@@ -1,9 +1,9 @@
-package ru.shumskii.weather.ui.base
+package ru.shumskii.weather.presentation.ui_kit.base
 
 import divkit.dsl.*
 import divkit.dsl.scope.DivScope
-import ru.shumskii.weather.ui.resources.Colors
-import ru.shumskii.weather.ui.resources.Images
+import ru.shumskii.weather.presentation.ui_kit.resources.Colors
+import ru.shumskii.weather.presentation.ui_kit.resources.Images
 
 fun DivScope.renderAppBar(
     title: String,

@@ -1,4 +1,4 @@
-package ru.shumskii.weather
+package ru.shumskii.weather.presentation
 
 import divkit.dsl.*
 import divkit.dsl.scope.DivScope
@@ -11,10 +11,10 @@ import org.springframework.web.bind.annotation.RestController
 import ru.shumskii.weather.data.remote.RealtimeWeatherResponse
 import ru.shumskii.weather.data.repository.UserRepository
 import ru.shumskii.weather.data.repository.WeatherRepository
-import ru.shumskii.weather.ui.base.*
-import ru.shumskii.weather.ui.resources.Colors
-import ru.shumskii.weather.ui.resources.Images
-import ru.shumskii.weather.ui.resources.Strings
+import ru.shumskii.weather.presentation.ui_kit.base.*
+import ru.shumskii.weather.presentation.ui_kit.resources.Colors
+import ru.shumskii.weather.presentation.ui_kit.resources.Images
+import ru.shumskii.weather.presentation.ui_kit.resources.Strings
 import ru.shumskii.weather.utils.USER_ID
 import java.time.LocalDateTime
 import java.time.format.DateTimeFormatter

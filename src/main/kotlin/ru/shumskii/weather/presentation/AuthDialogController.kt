@@ -1,4 +1,4 @@
-package ru.shumskii.weather
+package ru.shumskii.weather.presentation
 
 import divkit.dsl.*
 import divkit.dsl.scope.DivScope
@@ -11,9 +11,9 @@ import org.springframework.web.bind.annotation.RestController
 import ru.shumskii.weather.data.entity.User
 import ru.shumskii.weather.data.repository.UserRepository
 import ru.shumskii.weather.domain.models.AuthType
-import ru.shumskii.weather.ui.base.*
-import ru.shumskii.weather.ui.resources.Colors
-import ru.shumskii.weather.ui.resources.Strings
+import ru.shumskii.weather.presentation.ui_kit.base.*
+import ru.shumskii.weather.presentation.ui_kit.resources.Colors
+import ru.shumskii.weather.presentation.ui_kit.resources.Strings
 import ru.shumskii.weather.utils.*
 
 @RestController

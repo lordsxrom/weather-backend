@@ -1,4 +1,4 @@
-package ru.shumskii.weather
+package ru.shumskii.weather.presentation
 
 import divkit.dsl.*
 import divkit.dsl.core.expression
@@ -10,10 +10,10 @@ import org.springframework.web.bind.annotation.RequestMapping
 import org.springframework.web.bind.annotation.RequestParam
 import org.springframework.web.bind.annotation.RestController
 import ru.shumskii.weather.data.repository.UserRepository
-import ru.shumskii.weather.ui.base.*
-import ru.shumskii.weather.ui.custom.renderTitledInput
-import ru.shumskii.weather.ui.resources.Colors
-import ru.shumskii.weather.ui.resources.Strings
+import ru.shumskii.weather.presentation.ui_kit.base.*
+import ru.shumskii.weather.presentation.ui_kit.custom.renderTitledInput
+import ru.shumskii.weather.presentation.ui_kit.resources.Colors
+import ru.shumskii.weather.presentation.ui_kit.resources.Strings
 import ru.shumskii.weather.utils.*
 import kotlin.jvm.optionals.getOrNull
 

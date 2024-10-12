@@ -1,13 +1,13 @@
-package ru.shumskii.weather
+package ru.shumskii.weather.presentation
 
 import divkit.dsl.*
 import divkit.dsl.core.expression
 import org.springframework.http.HttpStatus
 import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.*
-import ru.shumskii.weather.ui.base.ROOT_SCAFFOLD_ID
-import ru.shumskii.weather.ui.base.navigationAction
-import ru.shumskii.weather.ui.resources.Colors
+import ru.shumskii.weather.presentation.ui_kit.base.ROOT_SCAFFOLD_ID
+import ru.shumskii.weather.presentation.ui_kit.base.navigationAction
+import ru.shumskii.weather.presentation.ui_kit.resources.Colors
 import ru.shumskii.weather.utils.HOST
 import ru.shumskii.weather.utils.USER_ID
 

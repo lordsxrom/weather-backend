@@ -1,4 +1,4 @@
-package ru.shumskii.weather.ui.base
+package ru.shumskii.weather.presentation.ui_kit.base
 
 import divkit.dsl.Action
 import divkit.dsl.Url
@@ -6,8 +6,8 @@ import divkit.dsl.action
 import divkit.dsl.core.ExpressionProperty
 import divkit.dsl.evaluate
 import divkit.dsl.scope.DivScope
-import ru.shumskii.weather.VARIABLE_HOST
-import ru.shumskii.weather.VARIABLE_USER_ID
+import ru.shumskii.weather.presentation.VARIABLE_HOST
+import ru.shumskii.weather.presentation.VARIABLE_USER_ID
 import ru.shumskii.weather.utils.UPDATE
 import ru.shumskii.weather.utils.HIDE
 import ru.shumskii.weather.utils.SHOW

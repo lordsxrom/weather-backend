@@ -1,4 +1,4 @@
-package ru.shumskii.weather
+package ru.shumskii.weather.presentation
 
 import divkit.dsl.*
 import divkit.dsl.core.expression
@@ -10,11 +10,11 @@ import org.springframework.web.bind.annotation.RequestHeader
 import org.springframework.web.bind.annotation.RequestMapping
 import org.springframework.web.bind.annotation.RestController
 import ru.shumskii.weather.domain.models.AuthType
-import ru.shumskii.weather.ui.base.*
-import ru.shumskii.weather.ui.custom.renderTitledInput
-import ru.shumskii.weather.ui.resources.Colors
-import ru.shumskii.weather.ui.resources.Images
-import ru.shumskii.weather.ui.resources.Strings
+import ru.shumskii.weather.presentation.ui_kit.base.*
+import ru.shumskii.weather.presentation.ui_kit.custom.renderTitledInput
+import ru.shumskii.weather.presentation.ui_kit.resources.Colors
+import ru.shumskii.weather.presentation.ui_kit.resources.Images
+import ru.shumskii.weather.presentation.ui_kit.resources.Strings
 import ru.shumskii.weather.utils.EMAIL
 import ru.shumskii.weather.utils.PASSWORD
 import ru.shumskii.weather.utils.TYPE

@@ -1,4 +1,4 @@
-package ru.shumskii.weather.ui.resources
+package ru.shumskii.weather.presentation.ui_kit.resources
 
 object Colors {
     const val PRIMARY = "#6750A4"
