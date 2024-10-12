@@ -23,4 +23,6 @@ object Strings {
     const val ADD_CITY_BOTTOM_SHEET_TITLE_CITY = "Add a city to your favourite list"
     const val ADD_CITY_BOTTOM_SHEET_HINT_CITY = "Enter city name"
     const val ADD_CITY_BOTTOM_SHEET_BUTTON_TEXT = "Add"
+
+    const val MAIN_APP_BAR_TEXT = "Main"
 }

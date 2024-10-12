@@ -19,7 +19,7 @@ fun DivScope.renderAppBar(
                 width = wrapContentSize(),
                 height = wrapContentSize(),
                 text = title,
-                fontSize = 18,
+                fontSize = 21,
                 alignmentVertical = center,
                 alignmentHorizontal = center,
                 textColor = color(Colors.ON_SURFACE)

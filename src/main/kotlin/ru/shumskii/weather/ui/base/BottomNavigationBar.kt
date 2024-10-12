@@ -39,15 +39,15 @@ private fun DivScope.renderNavigationItem(
 ): Div {
     return column(
         width = matchParentSize(weight = 1.0),
-        height = wrapContentSize(),
+        height = matchParentSize(),
         contentAlignmentHorizontal = center,
         contentAlignmentVertical = center,
         action = action,
-        paddings = edgeInsets(all = 4),
+        paddings = edgeInsets(all = 5),
         items = listOf(
             image(
-                height = fixedSize(24),
-                width = fixedSize(24),
+                height = fixedSize(28),
+                width = fixedSize(28),
                 imageUrl = Url.create(imageUrl),
                 tintColor = if (isSelected) color(Colors.SURFACE_TINT) else color(Colors.ON_SURFACE),
             ),
@@ -55,9 +55,10 @@ private fun DivScope.renderNavigationItem(
                 height = wrapContentSize(),
                 width = wrapContentSize(),
                 text = text,
-                fontSize = 12,
+                fontSize = 10,
                 margins = edgeInsets(top = 2),
                 textColor = if (isSelected) color(Colors.SURFACE_TINT) else color(Colors.ON_SURFACE),
+                fontWeight = medium,
             ),
         ),
     )

@@ -10,8 +10,11 @@ class WeatherRepository(
     private val weatherApiService: WeatherApiService
 ) {
 
-    fun getRealtimeWeather(q: String): RealtimeWeatherResponse? {
-        val call = weatherApiService.getRealtimeWeather(q)
+    fun getRealtimeWeather(
+        q: String,
+        days: Int,
+    ): RealtimeWeatherResponse? {
+        val call = weatherApiService.getRealtimeWeather(q, days)
         val response: Response<RealtimeWeatherResponse> = call.execute()
         return if (response.isSuccessful) response.body() else null
     }
