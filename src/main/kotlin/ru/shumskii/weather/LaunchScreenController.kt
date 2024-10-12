@@ -8,6 +8,8 @@ import org.springframework.web.bind.annotation.*
 import ru.shumskii.weather.ui.Colors
 import ru.shumskii.weather.ui.ROOT_SCAFFOLD_ID
 import ru.shumskii.weather.ui.navigationAction
+import ru.shumskii.weather.utils.HOST
+import ru.shumskii.weather.utils.USER_ID
 
 @RestController
 @RequestMapping("/${LaunchScreenController.PAGE}")
@@ -16,7 +18,7 @@ class LaunchScreenController {
     @GetMapping
     fun getLaunchScreen(
         @RequestHeader headers: Map<String, String>,
-        @RequestParam(name = VARIABLE_USER_ID) userId: String?,
+        @RequestParam(name = USER_ID) userId: String?,
     ): ResponseEntity<Divan> {
         return ResponseEntity(
             divan {
@@ -31,7 +33,7 @@ class LaunchScreenController {
                     variables = listOf(
                         stringVariable(
                             name = VARIABLE_HOST,
-                            value = headers["host"]!!
+                            value = headers[HOST]!!
                         ),
                         stringVariable(
                             name = VARIABLE_USER_ID,
@@ -53,7 +55,7 @@ class LaunchScreenController {
                                     page = if (userId.isNullOrBlank()) {
                                         AuthScreenController.PAGE
                                     } else {
-                                        "main"
+                                        TODO("use main page")
                                     },
                                 ),
                             ),
@@ -71,8 +73,8 @@ class LaunchScreenController {
     }
 }
 
-const val PRIVATE_VARIABLE_EMAIL = "email_text_value"
-const val PRIVATE_VARIABLE_PASSWORD = "password_text_value"
+const val PRIVATE_VARIABLE_EMAIL = "private_variable_email"
+const val PRIVATE_VARIABLE_PASSWORD = "private_variable_password"
 
-const val VARIABLE_USER_ID = "user_id"
-const val VARIABLE_HOST = "host"
+const val VARIABLE_HOST = "variable_host"
+const val VARIABLE_USER_ID = "variable_user_id"

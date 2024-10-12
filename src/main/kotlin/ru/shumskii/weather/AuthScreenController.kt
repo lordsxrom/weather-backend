@@ -1,6 +1,7 @@
 package ru.shumskii.weather
 
 import divkit.dsl.*
+import divkit.dsl.core.expression
 import divkit.dsl.scope.DivScope
 import org.springframework.http.HttpStatus
 import org.springframework.http.ResponseEntity
@@ -8,14 +9,18 @@ import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.RequestHeader
 import org.springframework.web.bind.annotation.RequestMapping
 import org.springframework.web.bind.annotation.RestController
+import ru.shumskii.weather.domain.models.AuthType
 import ru.shumskii.weather.ui.*
+import ru.shumskii.weather.utils.EMAIL
+import ru.shumskii.weather.utils.PASSWORD
+import ru.shumskii.weather.utils.TYPE
 
 @RestController
 @RequestMapping("/${AuthScreenController.PAGE}")
 class AuthScreenController {
 
-    @GetMapping("/patch")
-    fun getAuthScreenPatch(
+    @GetMapping
+    fun getAuthScreen(
         @RequestHeader headers: Map<String, String>,
     ): ResponseEntity<DivanPatch> {
         return ResponseEntity(
@@ -78,7 +83,15 @@ class AuthScreenController {
                 ),
                 renderButton(
                     text = Strings.AUTH_BUTTON_TEXT_SIGN_IN,
-                    action = action(),
+                    action = showDialogAction(
+                        dialog = AuthDialogController.PAGE,
+                        queries = mapOf(
+                            TYPE to AuthType.SIGN_IN,
+                            EMAIL to "@{$PRIVATE_VARIABLE_EMAIL}",
+                            PASSWORD to "@{$PRIVATE_VARIABLE_PASSWORD}",
+                        ),
+                        isEnabledExpression = expression("@{len($PRIVATE_VARIABLE_EMAIL) > 0 && len($PRIVATE_VARIABLE_PASSWORD) > 0}")
+                    ),
                     margins = edgeInsets(top = 28),
                 ),
                 renderAuthDivider(
@@ -86,7 +99,15 @@ class AuthScreenController {
                 ),
                 renderOutlinedButton(
                     text = Strings.AUTH_BUTTON_TEXT_SIGN_UP,
-                    action = action(),
+                    action = showDialogAction(
+                        dialog = AuthDialogController.PAGE,
+                        queries = mapOf(
+                            TYPE to AuthType.SIGN_UP,
+                            EMAIL to "@{$PRIVATE_VARIABLE_EMAIL}",
+                            PASSWORD to "@{$PRIVATE_VARIABLE_PASSWORD}",
+                        ),
+                        isEnabledExpression = expression("@{len($PRIVATE_VARIABLE_EMAIL) > 0 && len($PRIVATE_VARIABLE_PASSWORD) > 0}")
+                    ),
                     margins = edgeInsets(top = 40),
                 )
             )

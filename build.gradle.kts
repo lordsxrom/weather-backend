@@ -3,6 +3,7 @@ plugins {
 	kotlin("plugin.spring") version "1.9.25"
 	id("org.springframework.boot") version "3.3.4"
 	id("io.spring.dependency-management") version "1.1.6"
+	kotlin("plugin.jpa") version "1.9.25"
 }
 
 group = "ru.shumskii"
@@ -28,6 +29,10 @@ dependencies {
 	implementation("org.springframework.boot:spring-boot-starter-web")
 
 	implementation("com.yandex.div:kotlin-json-builder:30.15.0")
+
+	// H2 Database
+	implementation("org.springframework.boot:spring-boot-starter-data-jpa")
+	runtimeOnly("com.h2database:h2")
 }
 
 kotlin {
