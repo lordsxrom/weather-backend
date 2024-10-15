@@ -2,6 +2,8 @@ package ru.shumskii.weather.presentation.ui_kit.base
 
 import divkit.dsl.*
 import divkit.dsl.scope.DivScope
+import ru.shumskii.weather.presentation.MainScreenController
+import ru.shumskii.weather.presentation.SettingsScreenController
 import ru.shumskii.weather.presentation.ui_kit.resources.Colors
 import ru.shumskii.weather.presentation.ui_kit.resources.Images
 import ru.shumskii.weather.presentation.ui_kit.resources.Strings
@@ -19,13 +21,17 @@ fun DivScope.renderBottomNavigationBar(
                 imageUrl = Images.NAVIGATION_ITEM_ICON_MAIN,
                 text = Strings.NAVIGATION_ITEM_TEXT_MAIN,
                 isSelected = stateId == 0,
-                action = action(), // Do nothing
+                action = navigationAction(
+                    page = MainScreenController.PAGE,
+                )
             ),
             renderNavigationItem(
                 imageUrl = Images.NAVIGATION_ITEM_ICON_SETTINGS,
                 text = Strings.NAVIGATION_ITEM_TEXT_SETTINGS,
                 isSelected = stateId == 1,
-                action = action(), // Do nothing
+                action = navigationAction(
+                    page = SettingsScreenController.PAGE,
+                )
             ),
         ),
     )
