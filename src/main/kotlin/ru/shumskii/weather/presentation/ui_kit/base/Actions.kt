@@ -8,9 +8,9 @@ import divkit.dsl.evaluate
 import divkit.dsl.scope.DivScope
 import ru.shumskii.weather.presentation.VARIABLE_HOST
 import ru.shumskii.weather.presentation.VARIABLE_USER_ID
-import ru.shumskii.weather.utils.UPDATE
 import ru.shumskii.weather.utils.HIDE
 import ru.shumskii.weather.utils.SHOW
+import ru.shumskii.weather.utils.UPDATE
 import ru.shumskii.weather.utils.USER_ID
 
 fun DivScope.navigationAction(

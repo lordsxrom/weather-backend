@@ -19,6 +19,10 @@ class AppConfig {
     @Value("\${rapidapi.weather.base_url}")
     lateinit var weatherBaseUrl: String
 
+//    val weatherApiKey: String = "0adbb040e7msh2fa75f62f3403b8p10b327jsnc8128660ba19"
+//
+//    val weatherBaseUrl: String = "https://weatherapi-com.p.rapidapi.com/"
+
     @Bean
     open fun apiKeyInterceptor(): Interceptor {
         return WeatherApiHeadersInterceptor(

@@ -6,7 +6,6 @@ import divkit.dsl.scope.DivScope
 import org.springframework.http.HttpStatus
 import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.GetMapping
-import org.springframework.web.bind.annotation.RequestHeader
 import org.springframework.web.bind.annotation.RequestMapping
 import org.springframework.web.bind.annotation.RestController
 import ru.shumskii.weather.domain.models.AuthType
@@ -24,9 +23,7 @@ import ru.shumskii.weather.utils.TYPE
 class AuthScreenController {
 
     @GetMapping
-    fun getAuthScreen(
-        @RequestHeader headers: Map<String, String>,
-    ): ResponseEntity<DivanPatch> {
+    fun getAuthScreen(): ResponseEntity<DivanPatch> {
         return ResponseEntity(
             divanPatch {
                 patch(

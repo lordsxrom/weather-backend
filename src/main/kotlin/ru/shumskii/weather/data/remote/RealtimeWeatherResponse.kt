@@ -21,10 +21,13 @@ data class Location(
 
 data class Current(
     @SerializedName("temp_c") val temperatureInCelsius: Double,
+    @SerializedName("time") val time: String,
     @SerializedName("wind_kph") val windInKph: Double,
     @SerializedName("humidity") val humidity: Int,
     @SerializedName("feelslike_c") val feelslikeInCelsius: Double,
     @SerializedName("condition") val condition: Condition,
+    @SerializedName("pressure_mb") val pressureMb: Int,
+    @SerializedName("uv") val uv: Double,
 )
 
 data class Condition(
@@ -41,4 +44,14 @@ data class ForecastDay(
     @SerializedName("date") val date: String,
     @SerializedName("date_epoch") val dateEpoch: Long,
     @SerializedName("hour") val hours: List<Current>,
+    @SerializedName("day") val day: Day,
 )
+
+data class Day(
+    @SerializedName("daily_chance_of_rain") val dailyChanceOfRain: Int,
+    @SerializedName("maxwind_mph") val maxWindMph: Double,
+    @SerializedName("avghumidity") val avgHumidity: Double,
+    @SerializedName("uv") val uv: Double,
+    @SerializedName("condition") val condition: Condition,
+)
+

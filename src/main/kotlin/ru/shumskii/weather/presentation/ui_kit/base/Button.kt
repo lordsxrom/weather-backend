@@ -8,6 +8,8 @@ fun DivScope.renderButton(
     text: String,
     actions: List<Action>,
     margins: EdgeInsets = edgeInsets(),
+    textColor: Color = color(Colors.ON_TERTIARY),
+    background: List<Background> = solidBackground(color(Colors.TERTIARY)).asList(),
 ): Div {
     return text(
         width = matchParentSize(),
@@ -15,10 +17,10 @@ fun DivScope.renderButton(
         text = text,
         fontWeight = medium,
         fontSize = 16,
-        textColor = color(Colors.ON_TERTIARY),
+        textColor = textColor,
         margins = margins,
         actions = actions,
-        background = solidBackground(color(Colors.TERTIARY)).asList(),
+        background = background,
         border = border(cornerRadius = 8),
         textAlignmentHorizontal = center,
         textAlignmentVertical = center,

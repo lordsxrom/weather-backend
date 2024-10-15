@@ -15,10 +15,9 @@ import ru.shumskii.weather.presentation.ui_kit.base.*
 import ru.shumskii.weather.presentation.ui_kit.resources.Colors
 import ru.shumskii.weather.presentation.ui_kit.resources.Images
 import ru.shumskii.weather.presentation.ui_kit.resources.Strings
+import ru.shumskii.weather.utils.CITY
 import ru.shumskii.weather.utils.USER_ID
-import java.time.LocalDateTime
-import java.time.format.DateTimeFormatter
-import java.util.*
+import ru.shumskii.weather.utils.formatDate
 import kotlin.jvm.optionals.getOrNull
 
 @RestController
@@ -103,32 +102,40 @@ internal class MainScreenController(
             height = matchParentSize(),
             orientation = vertical,
             items = realtimeWeathers.mapIndexed { index, realtimeWeather ->
-                renderCityWeather(
+                renderWeatherCard(
                     realtimeWeather = realtimeWeather,
-                    isFirst = index == 0,
-                    isLast = index == realtimeWeathers.size - 1
+                    height = fixedSize(224),
+                    border = border(cornerRadius = 32),
+                    margins = edgeInsets(
+                        top = if (index == 0) 8 else 4,
+                        bottom = if (index == realtimeWeathers.size - 1) 8 else 4,
+                    ),
+                    action = navigationAction(
+                        page = CityScreenController.PAGE,
+                        queries = mapOf(
+                            CITY to realtimeWeather.location.name
+                        )
+                    )
                 )
             }
         )
     }
 
-    fun DivScope.renderCityWeather(
+    fun DivScope.renderWeatherCard(
         realtimeWeather: RealtimeWeatherResponse,
-        isFirst: Boolean,
-        isLast: Boolean,
+        height: Size,
+        border: Border? = null,
+        margins: EdgeInsets? = null,
+        action: Action? = null,
     ): Div {
         return stack(
             width = matchParentSize(),
-            height = fixedSize(256),
-            border = border(
-                cornerRadius = 32,
-            ),
+            height = height,
+            border = border,
             background = solidBackground(color(Colors.SURFACE_CONTAINER)).asList(),
             paddings = edgeInsets(all = 16),
-            margins = edgeInsets(
-                top = if (isFirst) 8 else 4,
-                bottom = if (isLast) 8 else 4,
-            ),
+            margins = margins,
+            action = action,
             items = listOf(
                 text(
                     width = wrapContentSize(),
@@ -187,7 +194,11 @@ internal class MainScreenController(
                 text(
                     width = wrapContentSize(),
                     height = wrapContentSize(),
-                    text = formatDate(realtimeWeather.location.localtime),
+                    text = formatDate(
+                        inputDateTimeString = realtimeWeather.location.localtime,
+                        inputPattern = "yyyy-MM-dd HH:mm",
+                        outputPattern = "MMMM dd, HH:mm"
+                    ),
                     fontSize = 22,
                     textColor = color(Colors.ON_SURFACE),
                     alignmentHorizontal = start,
@@ -224,14 +235,6 @@ internal class MainScreenController(
                 ),
             ),
         )
-    }
-
-    private fun formatDate(inputDateTimeString: String): String {
-        val inputFormatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm", Locale.US)
-        val dateTime = LocalDateTime.parse(inputDateTimeString, inputFormatter)
-        val outputFormatter = DateTimeFormatter.ofPattern("MMMM dd, HH:mm", Locale.US)
-        val formattedDateTimeString = dateTime.format(outputFormatter)
-        return formattedDateTimeString
     }
 
     companion object {
