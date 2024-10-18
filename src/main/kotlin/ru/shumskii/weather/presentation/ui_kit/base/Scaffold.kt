@@ -12,8 +12,8 @@ fun DivScope.renderScaffold(
 ): Div {
     return stack(
         id = ROOT_SCAFFOLD_ID,
-        width = fixedSize(400),
-        height = fixedSize(800),
+        width = matchParentSize(),
+        height = matchParentSize(),
         items = listOfNotNull(
             column(
                 width = matchParentSize(),
